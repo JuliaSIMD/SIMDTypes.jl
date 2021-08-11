@@ -16,10 +16,16 @@ using Test
   
   @test 1.3 isa SIMDTypes.FloatingTypes
   @test !(1.3 isa SIMDTypes.IntegerTypes)
+  @test !(1.3 isa SIMDTypes.IntegerTypesHW)
   @test 1 isa SIMDTypes.IntegerTypes
   @test 1 isa SIMDTypes.SignedHW
   @test !(1 isa SIMDTypes.UnsignedHW)
-  @test !(1 isa SIMDTypes.IntegerTypesHW)
+  @test 1 isa SIMDTypes.IntegerTypesHW
+  @test one(UInt) isa SIMDTypes.IntegerTypes
+  @test !(one(UInt) isa SIMDTypes.SignedHW)
+  @test one(UInt) isa SIMDTypes.UnsignedHW
+  @test one(UInt) isa SIMDTypes.IntegerTypesHW
+  
 
   @test ntuple(Core.VecElement, 2) isa SIMDTypes._Vec
 end
