@@ -3,7 +3,7 @@ module SIMDTypes
 # using Static: StaticInt
 
 struct Bit; data::Bool; end # Dummy for Ptr
-# @inline Base.convert(::Type{Bool}, b::Bit) = getfield(b, :data)
+@inline Base.convert(::Type{Bool}, b::Bit) = getfield(b, :data)
 
 const FloatingTypes = Union{Float16,Float32,Float64}
 const SignedHW = Union{Int8,Int16,Int32,Int64}

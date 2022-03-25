@@ -4,6 +4,8 @@ using Test
 @testset "SIMDTypes.jl" begin
   @test SIMDTypes.Bit(true).data
   @test !SIMDTypes.Bit(false).data
+  @test convert(Bool, SIMDTypes.Bit(true))
+  @test !convert(Bool, SIMDTypes.Bit(false))
   @test SIMDTypes.Bit(true) isa SIMDTypes.NativeTypes
   @test !(SIMDTypes.Bit(true) isa SIMDTypes.NativeTypesExceptBit)
   @test SIMDTypes.Bit(true) isa SIMDTypes.NativeTypesExceptFloat16

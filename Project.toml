@@ -1,7 +1,7 @@
 name = "SIMDTypes"
 uuid = "94e857df-77ce-4151-89e5-788b33177be4"
 authors = ["Julia Computing", "Inc. and Contributors"]
-version = "0.1.0"
+version = "0.1.1"
 
 [compat]
 julia = "1"
