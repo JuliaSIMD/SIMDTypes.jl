@@ -15,9 +15,13 @@ const UnsignedHW = Union{UInt8,UInt16,UInt32,UInt64}
 const IntegerTypesHW = Union{SignedHW,UnsignedHW}
 # const IntegerTypes = Union{StaticInt,IntegerTypesHW}
 
-const NativeTypesExceptBitandFloat16 = Union{Bool,Base.HWReal}
-const NativeTypesExceptBit = Union{Bool,Base.HWReal,Float16}
-const NativeTypesExceptFloat16 = Union{Bool,Base.HWReal,Bit}
+@static if VERSION >= v"1.12.0-DEV"
+    const NativeTypesExceptBitandFloat16 = Union{Bool,Float32,Float64,SignedHW,UnsignedHW}
+else
+    const NativeTypesExceptBitandFloat16 = Union{Bool,Base.HWReal}
+end
+const NativeTypesExceptFloat16 = Union{NativeTypesExceptBitandFloat16, Bit}
+const NativeTypesExceptBit = Union{Bool,Base.HWReal}
 const NativeTypes = Union{NativeTypesExceptBit, Bit}
 
 const _Vec{W,T<:Number} = NTuple{W,Core.VecElement{T}}
